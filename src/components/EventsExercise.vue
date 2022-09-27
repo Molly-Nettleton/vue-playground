@@ -26,7 +26,7 @@
             "greeting" property and pass its value into an alert().
           </p>
           <!-- add event listener to the button element -->
-          <button class="btn btn-primary m-2">Greet</button>
+          <button class="btn btn-primary m-2" @click="greet">Greet</button>
         </div>
       </div>
     </div>
@@ -34,20 +34,21 @@
 </template>
 
 
-<script>
+<script>// @ts-nocheck
+
 import { reactive } from "vue";
 export default {
   name: "events-exercise",
   setup() {
-    // NOTE typically state will be abstracted to a global AppState
     const state = reactive({
       counter: 0,
-      //add property called "greeting"
-      //create a method called "greet"
+      greeting: "Hello world!"
     });
     return {
       state,
-      // Add your methods here
+      greet() {
+        alert(state.greeting)
+      }
     };
   },
   components: {},
